@@ -1,0 +1,30 @@
+{
+  "status": "completed",
+  "source": "completed GPU generation pilot artifacts",
+  "arms": {
+    "base": {
+      "problems": 8,
+      "samples_per_problem": 1,
+      "records": 8,
+      "accuracy_over_samples": 0.0,
+      "truncated": 8,
+      "no_boxed": 8,
+      "generation_wall_s": 642.22137600102,
+      "session_wall_s": 671.5753352389438
+    },
+    "edited": {
+      "problems": 8,
+      "samples_per_problem": 4,
+      "records": 32,
+      "accuracy_over_samples": 0.25,
+      "cluster_mean_accuracy": 0.25,
+      "cluster_bootstrap_95ci": [0.0625, 0.46875],
+      "truncated": 18,
+      "no_boxed": 20,
+      "generation_wall_s": 1177.7240174530307,
+      "session_wall_s": 1294.2062180310022
+    }
+  },
+  "comparison_note": "Descriptive only: the arms have different samples per problem (base 1, edited 4), so this is not a matched-sample causal comparison.",
+  "gpu_compute_time": null
+}

@@ -1,0 +1,100 @@
+{
+  "status": "PASS",
+  "scope": "Preservation of mathematical/source structure; not an independent scientific or literature audit.",
+  "english_source": "research.en.source.md",
+  "english_sha256": "63b8ce1322a87791066170652e79e9ce98b41d9334679f4e1b14733901a9831f",
+  "japanese_editable_source": "../research.ja.md",
+  "japanese_current_sha256": "7bcbbb1a3f4eac78ba7eab0b6a578b7d1bbe2a2b1e7705c087bae646b3f943c3",
+  "japanese_initial_sha256": "1f4759ddc3f11068c66838ef67a69f17fef5c831508cc1e8a742df05a8f89984",
+  "checks": {
+    "display_math": {
+      "passed": true,
+      "source_count": 15,
+      "translation_count": 15
+    },
+    "inline_math": {
+      "passed": true,
+      "source_count": 90,
+      "translation_count": 90
+    },
+    "code_blocks": {
+      "passed": true,
+      "source_count": 1,
+      "translation_count": 1
+    },
+    "figure_order": {
+      "passed": true,
+      "source_count": 10,
+      "translation_count": 10
+    },
+    "interactive_order": {
+      "passed": true,
+      "source_count": 1,
+      "translation_count": 1
+    },
+    "links": {
+      "passed": true,
+      "source_count": 12,
+      "translation_count": 12
+    },
+    "footnote_references": {
+      "passed": true,
+      "source_count": 9,
+      "translation_count": 9
+    },
+    "decimal_percentage_fraction_values": {
+      "passed": true,
+      "source_count": 46,
+      "translation_count": 46
+    },
+    "heading_structure": {
+      "passed": true
+    }
+  },
+  "headings": [
+    {
+      "english": "1. What did Astra actually have to solve?",
+      "japanese": "1. Astraには、何が見えていたのか？"
+    },
+    {
+      "english": "2. How can a 0.016% edit behave like a program?",
+      "japanese": "2. 0.016%の編集は、どのようにプログラムとして働くのか？"
+    },
+    {
+      "english": "3. Was the switch really doing the work?",
+      "japanese": "3. 状態に応じて変わるスイッチは、本当に必要だったのか？"
+    },
+    {
+      "english": "4. What does Fisher geometry predict—and where does it fail?",
+      "japanese": "4. Fisher幾何でどこまで予測できるのか？"
+    },
+    {
+      "english": "5. What can one writer realize—and how does the metric choose?",
+      "japanese": "5. 一つの行列でどこまで動かせるのか——計量を変えると何が変わるのか？"
+    },
+    {
+      "english": "Which geometry defines the closest move?",
+      "japanese": "どの変化が「最も近い」のか？"
+    },
+    {
+      "english": "Can the same behavioral effect cost less?",
+      "japanese": "同じ効果を、より低いコストで実現できるか？"
+    },
+    {
+      "english": "6. Why can’t one shared edit implement every steering request?",
+      "japanese": "6. 重みを共有すると、なぜ実現できないステアリングが生まれるのか？"
+    },
+    {
+      "english": "7. Where does Amari's duality enter?",
+      "japanese": "7. 甘利の双対性はどこに現れるのか？"
+    },
+    {
+      "english": "8. What should we conclude now?",
+      "japanese": "8. ここまでで何が分かり、何が残ったのか？"
+    },
+    {
+      "english": "Sources",
+      "japanese": "参考資料"
+    }
+  ]
+}

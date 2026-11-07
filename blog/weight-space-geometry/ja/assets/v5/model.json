@@ -1,0 +1,96 @@
+{
+  "classification": "exact linear-writer toy; not a Qwen trajectory",
+  "states": [
+    [
+      1.0,
+      0.0
+    ],
+    [
+      0.0,
+      1.0
+    ],
+    [
+      -1.0,
+      0.0
+    ]
+  ],
+  "W": [
+    [
+      1.0,
+      0.0
+    ],
+    [
+      0.0,
+      1.0
+    ]
+  ],
+  "k": [
+    1.0,
+    0.0
+  ],
+  "d": [
+    0.0,
+    0.7
+  ],
+  "weight_outputs": [
+    [
+      1.0,
+      0.7
+    ],
+    [
+      0.0,
+      1.0
+    ],
+    [
+      -1.0,
+      -0.7
+    ]
+  ],
+  "hook_outputs": [
+    [
+      1.0,
+      0.7
+    ],
+    [
+      0.0,
+      1.0
+    ],
+    [
+      -1.0,
+      -0.7
+    ]
+  ],
+  "shifts": [
+    [
+      0.0,
+      0.7
+    ],
+    [
+      0.0,
+      0.0
+    ],
+    [
+      -0.0,
+      -0.7
+    ]
+  ],
+  "one_shot_shifts": [
+    [
+      0.0,
+      0.7
+    ],
+    [
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0
+    ]
+  ],
+  "max_absolute_discrepancy": 0.0,
+  "motion_axes": {
+    "horizontal": "execution order",
+    "vertical": "activation increment along d"
+  }
+}

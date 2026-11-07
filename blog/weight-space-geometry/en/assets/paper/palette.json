@@ -1,0 +1,69 @@
+{
+  "name": "Sumi & Rose — 白にほのかな和紙",
+  "version": "2026-11-06",
+  "colors": {
+    "paper": "#FFFEFC",
+    "rose": "#E5C6BA",
+    "clay": "#CDA79A",
+    "ink": "#292C35",
+    "heading": "#34465B",
+    "indigo": "#364C6A",
+    "vermilion": "#914F46",
+    "muted": "#6B5A54",
+    "gold": "#9B774E"
+  },
+  "roles": {
+    "paper": "Near-white surface with a barely perceptible warm paper fibre texture",
+    "rose": "Dilute red pigment in paper fibres; not a text color",
+    "clay": "Equation wash and delicate divisions",
+    "ink": "Body and mathematical notation",
+    "heading": "Deep ink-blue editorial headings",
+    "indigo": "Scientific direction and projection",
+    "vermilion": "Navigation and interaction",
+    "muted": "Captions and metadata",
+    "gold": "Restrained warm annotation"
+  },
+  "texture": {
+    "file": "washi.png",
+    "generator": "Figma generate_image",
+    "model": "gpt-image-2.5-sunburst",
+    "figma_file": "ot7ouesgGj6UOvQ93PPHUE",
+    "figma_node": "108:11",
+    "sha256": "acdc0b9e69db3ff9b06ed0bfe9062187b0ee02987b02dc9414b0daa1fde6d755",
+    "display": "1024px repeat with 94% near-white veil; original texture visible at 6%",
+    "figma_cover_node": "110:11"
+  },
+  "compositing": {
+    "method": "CSS mix-blend-mode:multiply on figure-art",
+    "scope": "Static images, animated GIFs, MP4s, article and full-size viewers",
+    "note": "Original assets retain their source background. Page compositing maps source white to the shared paper; no overall media opacity or numerical redraw."
+  },
+  "text_contrast_on_base": {
+    "ink": 13.83,
+    "heading": 9.59,
+    "muted": 6.48,
+    "vermilion": 6.11,
+    "indigo": 8.69
+  },
+  "source_asset_sha256": {
+    "v11/cover.png": "7570ca7b6e90f2d9f20013745b30ecd59dae75f4e432c89294fbce71a335cefa",
+    "v5/mechanism.png": "3fbc5227e6b27ce7d0c8f6274313bc30fb9b7456772592137b6bdd7c5a92562f",
+    "v5/mechanism.gif": "e1afe9f581b3a7a97dd860da92cc41965812dac41026b788b8441ea06f7f1504",
+    "v5/mechanism.mp4": "014e1cbdfcf0390b7b5e30c1485cce9792e95986d7df279c7c3ffa965a3e7994",
+    "v5/model.json": "3243040b511190909bc2d122d33314514ea6e02dede1d5b97507921ca3382a82",
+    "v3/reconstruction.png": "de8b9ddebfc1819173a594926793c32fb8e6636d489ae5396f2d5a8ff06ea5fe",
+    "v3/controls.png": "76915f7fdf50baa89a916c6cba143f7d7712f4bcbe517cd035e22b022ae6ebd8",
+    "v3/fisher.png": "ebdcaedd8b2acc1f2d7b991cc59dadbeb7b170ca0be9ea84dfc7879e79b5b7e1",
+    "v3/fisher.gif": "b93015c04e37166b94fe110179d88f7f271de7e49e94e7f536fa0cd7732d8dcd",
+    "v4/reachability.png": "b1ba257ea076a21680d45f9dccfba9d532f61a7999be42faad73f6297eeaafb9",
+    "v4/reachability.gif": "f85d059b1c856514a130c7630defcdaeb55866b52b0c604728fcb1677d85940d",
+    "v4/reachability.mp4": "4a87094fefea9875effcff1268a54f127507bf1b684113ab804cead4d6d98959",
+    "v4/model.json": "ecdec191db29da2b01c9569cc9621000ba9b0c0b951748713110fe63c26cba12",
+    "v3/duality.png": "60af36804b820e41ea25a811bd9d92aa999de9cf3370f6430386146e4fda8f05",
+    "v3/duality.gif": "133e8377edeb3cb3d006ffd27666d09db8594ba606ff7847c1acbc48b0c41cfc",
+    "v4/coordinates.png": "85f4356c7a6cc2d0da865760fb64bb34feb54049b06a6cea94ceb6cb644ac390",
+    "v4/coordinates.gif": "f3b70518f92b5e8d3253e39c9a41e21ae17a6b6f23f28f080ba4c287947844d0",
+    "v4/coordinates.mp4": "32bb1ab4f97a339b3c97708c56de26f7536426262613be83a923d3d816b8c3a4",
+    "v3/impossibility.png": "7c51da258db6b6b2dd4bad0ea5b132888c9b59effb21a346c5f90c41316f4616"
+  }
+}

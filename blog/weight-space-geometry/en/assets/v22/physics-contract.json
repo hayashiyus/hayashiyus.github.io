@@ -1,0 +1,127 @@
+{
+  "version": "v22",
+  "classification": "engineered illustrative model, not a Qwen measurement or duality proof",
+  "coordinate_units": "metres, seconds, kilograms",
+  "schema": [
+    "t",
+    "x",
+    "y",
+    "yaw",
+    "vx",
+    "vy",
+    "omega"
+  ],
+  "physical_model": "2D depth-averaged shallow water, HLL/hydrostatic reconstruction, SSPRK2, Manning friction; planar body with distributed linear drag and unilateral compliant pole contact",
+  "rendering": "Computed local free surface and rigid-body trajectories; one prescribed upstream route-time extension drives both watercolor pigment and passive boats. Gate jet, main fall, microtexture and post-boundary sheet are illustrative optics, not 3D CFD. The 2D pole force omits vertical load and full 3D human dynamics.",
+  "main_outcome": "baseline passes the side opening and crosses the downstream main section; gate/pole cross the side section",
+  "no_equivalence_claim": "Same classified outlet only; not equal trajectories, forces, or general WSP/steering equivalence.",
+  "convergence": "Final-config spatial convergence NOT TESTED. Previous configuration had stable outlet classes but did not meet quantitative trajectory convergence.",
+  "film": {
+    "seconds": 24,
+    "fps": 24,
+    "physical_time_per_display_second": 1.0,
+    "baseline": [
+      0,
+      10.5
+    ],
+    "gate": [
+      11,
+      14
+    ],
+    "pole": [
+      14.5,
+      21.5
+    ],
+    "hold": "whole scene is held at the recorded terminal crossing and labelled as such"
+  },
+  "sources": {
+    "junction.py": "1d4c06da2c3013b305401854caf16fa305a987e8c9b543eaea9cbceed7cfbcd0",
+    "fv_core.py": "673f6f85a293c78cf69f5942f124388402398d7a8ed11ddd8f5f7cfe5153bcca",
+    "boats.py": "4f462d01fc85140bb833b1bedc0fde689836c6f2bef47b7f17c986db9858dbb1",
+    "run_cases.py": "5a360dcf99584d952dee3c6bbf024e553ba5c15ccc31db7320750253c6347773",
+    "hydro_surface.py": "10e1459d0902369b081e9d0c071f5edc61f2e70857848136ad60bdb8374d66a3",
+    "hybrid.py": "2c99cdd1213a004334fb0e1f2c75b140deadcabdcb2813b4b19056ace95fe1ef",
+    "motion.py": "f5882a615fe46a5eca15fae7fa79ebf138f330a62b22f403ab0996c30ecd6799",
+    "render.py": "79bc243b803043961734483cd9ed0ab2f207b154ed37c158640a123bd1984736",
+    "spill.py": "32cfa5fcd4201353b957ca0e09d5acfbda264ae942b7cef23566dbea8225cbbd",
+    "surface_raster.py": "5d5b9260458c02daeec4bd72a2d3d5f598ef96290bde1a28b888e43530c24582",
+    "water_paint.py": "c3a5a9518f1614fca781a829310bd98d6f0a69ade022295469a91ca47f3d2935",
+    "gate_paint.py": "94b233e213534834694bd7d6cc7818b91f2fa332ba47887279ecac7ca3e0a044",
+    "waterfall_paint.py": "9202a703edb1917672adf01cea9390c4b905c004e7fd9271f15a68f3653be739",
+    "verify_v22.py": "bde287d922ec825f33c3a3f2e157270f0f0be09cb5f88f5fa7353dace95a205e",
+    "boat_states.npz": "5f0483547114a5d661c01323ffbdb7901e19a071f15af52638d2cc95208f1ec4",
+    "fluid_fields.npz": "95300c9f376d29b38aca65143a2089129b05224b4546ed9dd44a317f094c1195",
+    "straight-reference.png": "75cf295deecd77bee6cf99a504fa3489b352a1ed3c54a1d32effaf6746ac761a",
+    "straight-clean-plate.png": "308d4ed7ccc857d4e128ff18b7ed14c605afde16ca6ad1cfa1d57efa407dc0ac",
+    "make_delivery.py": "24229853c341929ea2d8d52f47addb2a1e0f43c37969d8e4123fe9b2d7dd2608",
+    "build_review.py": "24d32790e59881072b87b2d8ae743a3fe75e6b4ab615419360879942cc117b7d",
+    "river_flow.py": "641c52cb7823eb07b623fe4a7352e1262b03c556539c65c77a2016d456cee08d",
+    "river_tracers.py": "1d6f675529949f710a2287d0cf3419e8684a4485dfe11d92ee7e95239007e2ed",
+    "verify_river_continuity.py": "e1e86a9f6ecccf37faa761adb4bf29aae36f99aea6fdf0804fa5e58c98a780a4",
+    "rig/mesh.py": "b4cdd16ecebcae5dc84cdb43db3d8a7e025943c803d25e21e56d34693ccb9b3a",
+    "rig/body_pose.py": "86cc78f5329b63e4d5f729b301c9a6b863b7736a2b1f3bae5ed3654d03089bff",
+    "callouts.py": "a1dab957dbdf2ae18afdba4d896d3d0077319d2bec2e60bbf9fa402c14ffce34"
+  },
+  "visual_revision": {
+    "name": "transparent sidewalls",
+    "sidewall_opacity": 0,
+    "scope": "The two side shoulders of the lateral apron are omitted from the ground/water rasterization. The ramp floor and physical boundary remain. This is a transparent-material view, not removal of the simulated boundary.",
+    "motion_unchanged": true,
+    "physical_inputs_sha256": {
+      "fluid_fields.npz": "ff5e9e0c7fdfee7ed6d044f7382e9f76af34d964ab94a23584d2f1467b3e78af",
+      "boat_states.npz": "377e399d77145c2346caa4dfc7094231d0a369a701eed1f8029f5386b2114e28",
+      "boats.py": "4f462d01fc85140bb833b1bedc0fde689836c6f2bef47b7f17c986db9858dbb1",
+      "junction.py": "fe88710f97133f6bd12bf3dd32825c9b6f86882f511e8ff1941ec3613cddff59",
+      "motion.py": "6b34acb8d11ec33ea95926097be9ae6d13e300c61626033e796484d5b9684087"
+    },
+    "applies_to": "Historical sidewall-only revision, before the river-continuity update."
+  },
+  "main_outlet_visual_revision": {
+    "name": "one continuous curved flow atlas",
+    "scope": "Reach, rounded lip and falling sheet share one watercolor advection pass. The receiving pool is anchored at the same impact. A cumulative nonnegative outlet-flow clock replaces instantaneous time scaling. This does not change the shallow-water solve or boat/actor motion.",
+    "source_registration": "Aligned front/back painted water boundaries; stationary wood and rocks excluded",
+    "verification": "main-fall-qa.json",
+    "previous_source_media": "revisions/before-unified-main-fall/"
+  },
+  "river_continuity_revision": {
+    "boat_visual_scale": 1.2,
+    "physical_hull_dimensions_changed": false,
+    "gate_transit_s": 0.4,
+    "gate_ramp_s": 0.8,
+    "local_handoff_xy_m": [
+      0.13,
+      0.16
+    ],
+    "scope": "Prescribed causal upstream extension and continuous handoff to existing local 2D body dynamics; not full-river CFD. A inlet fields and boat trajectory recomputed; baseline/B force trajectories preserved.",
+    "verification": "river-continuity-qa.json",
+    "previous_source_media": "revisions/before-river-continuity/"
+  },
+  "rigid_pole_revision": {
+    "physical_length_m": 0.57,
+    "projected_length_px": 312.86953447691235,
+    "method": "A fixed camera-nullspace branch lifts a constant-length image direction to a unit 3D axis. Both hands and the rod endpoint derive from the same axis.",
+    "scope": "Kinematic staging constraint; hidden 3D pitch is restaged. Not full 3D contact or biomechanical validation.",
+    "tip_and_boat_trajectories_unchanged": true,
+    "verification": "rigid-pole-qa.json",
+    "previous_source_media": "revisions/before-rigid-pole/"
+  },
+  "whole_body_revision": {
+    "model": "One rigid torso/pelvis transform drives both shoulders, fixed-length elbow IK, pole-oriented palm frames, weighted lower clothing, explicit foot anchors.",
+    "body_cue": "Plant, drive and release, with causal 0.10 s smoothing of contact load for visual bracing only.",
+    "tip_shaft_grip_boat_trajectories_unchanged": true,
+    "torso_lean_range_degrees": [
+      -12.019657409792325,
+      -0.0
+    ],
+    "foot_drift_px": 0.0,
+    "verification": "body-push-qa.json",
+    "scope": "2D kinematic choreography; not full human dynamics or medical validation.",
+    "previous_source_media": "revisions/before-body-push/"
+  },
+  "annotation_revision": {
+    "description": "Quiet scene-registered paper callouts, progressive dotted leaders and open rings.",
+    "physical_and_character_motion_unchanged": true,
+    "verification": "callouts-qa.json",
+    "previous_source_media": "revisions/before-callouts/"
+  }
+}

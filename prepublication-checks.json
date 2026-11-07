@@ -1,0 +1,67 @@
+{
+  "date": "2026-11-08",
+  "scope": "Prepublication content, artifact and browser checks; not new experiments or proof of general scientific claims.",
+  "semantic_review": {
+    "bilingual": "PASS",
+    "math_corrections": [
+      "Nonzero objective differential in equal-effect optimum",
+      "Local linearization qualifier for general feasibility/cost statements"
+    ],
+    "original_approved_japanese_preserved": true
+  },
+  "protected_content": {
+    "display_equations": 15,
+    "inline_equations": 90,
+    "numeric_decimal_percentage_fraction_tokens": 46,
+    "figures": 10,
+    "status": "PASS"
+  },
+  "evidence_and_figures": {
+    "E1": "PASS",
+    "E2": "PASS; effect-matching failure retained",
+    "E3": "PASS; full-dose local-approximation failure retained",
+    "pilot": "PASS; unequal sampling caveat retained",
+    "reachability_toy": "PASS; independently recomputed",
+    "E5": "Planning only; internal dependencies omitted"
+  },
+  "staging": {
+    "html_pages": 24,
+    "local_resource_references": 464,
+    "fragment_anchors": 48,
+    "missing_resources": 0,
+    "missing_anchors": 0,
+    "fresh_archive_build": "PASS",
+    "private_paths_and_credentials_scan": "PASS"
+  },
+  "browser": {
+    "engine": "Chromium via Playwright; responsive viewport emulation, not physical phone hardware",
+    "english_widths": [
+      1440,
+      390,
+      320
+    ],
+    "japanese_widths": [
+      390,
+      320
+    ],
+    "horizontal_page_overflow": false,
+    "rendered_katex_per_language": 105,
+    "katex_errors": 0,
+    "video_playback_checked": 6,
+    "gif_playback": "PASS",
+    "interactive_signed_gate": "PASS",
+    "cover_autoplay": "PASS",
+    "pause_resume": "PASS",
+    "reduced_motion_static": "PASS",
+    "expanded_proofs": "PASS",
+    "visual_screenshots_inspected": [
+      "desktop cover",
+      "EN mobile cover",
+      "EN mobile geometry",
+      "EN mobile proof",
+      "JA mobile cover",
+      "JA mobile proof"
+    ]
+  },
+  "source_archive_sha256": "4d35280a542cc15a25a47fd0f4882d98fe6030bbd246fa61dabddb735e745742"
+}
