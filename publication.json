@@ -1,10 +1,10 @@
 {
   "publication_date": "2026-11-08",
   "source_sha256": {
-    "research.md": "1b21395f75f18d34d8e85fbd852392ce9a36ada0fc039aaf1da197d65885a499",
-    "research.ja.md": "7bcbbb1a3f4eac78ba7eab0b6a578b7d1bbe2a2b1e7705c087bae646b3f943c3",
-    "assets/figures.json": "9e25e0ffb51ab49af97d6f778557f8fd75ec7cdd6846a365ea06c775ab52dd22",
-    "assets/figures.ja.json": "a36eec75b25398329be887dbe001e2dec7b2cfb2cd5f28d525bd1dcb6fc87de1",
+    "research.md": "09e9bb64783e208497569676c9226a339e73cd5ef37100696fa5f48e05dc8a2e",
+    "research.ja.md": "b36d156d940e50c8806d67cd27c9b355e7b867e93842934552614c8c8c398107",
+    "assets/figures.json": "f298c4532939646baf1e737bc3525ad53d390fddded40992dd94d2ea93f6a2ec",
+    "assets/figures.ja.json": "bd73211d4c91fb66da03f142dea5dde00e3c00e5fa7786b9d019853b225e5d59",
     "translations/prepublication-corrections.json": "83e5e14fa2bfcad4c90d7dd318aa3354af66c3acb2ca89788571ef6c40c5a856"
   }
 }
