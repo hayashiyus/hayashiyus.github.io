@@ -45,7 +45,7 @@
       320
     ],
     "horizontal_page_overflow": false,
-    "rendered_katex_per_language": 105,
+    "rendered_katex_per_language": 138,
     "katex_errors": 0,
     "video_playback_checked": 6,
     "gif_playback": "PASS",
@@ -60,8 +60,36 @@
       "EN mobile geometry",
       "EN mobile proof",
       "JA mobile cover",
-      "JA mobile proof"
-    ]
+      "JA mobile proof",
+      "KaTeX revision: EN mobile projection",
+      "KaTeX revision: JA mobile equal-effect",
+      "KaTeX revision: desktop coordinate animation",
+      "KaTeX revision: mobile interactive gate"
+    ],
+    "caption_katex_per_language": 29,
+    "interactive_katex_per_language": 4
   },
-  "source_archive_sha256": "11aec3ea6a7f61ea0db6abc9d0fa180118f1aabc03bc9edda341fbfce28a8ecf"
+  "source_archive_sha256": "050d0e4fc79dc9a71232a0349f7248d52211e0d010f447dde95bb60630bf387f",
+  "math_typography_revision": {
+    "date": "2026-11-08",
+    "engine": "KaTeX 0.16.11; article runtime, CSS, fonts",
+    "selected_static_figures": 9,
+    "regenerated_gifs": 6,
+    "regenerated_mp4s": 5,
+    "cached_typeset_labels": 271,
+    "figure_geometry_unchanged": true,
+    "model_and_measurement_files_byte_identical": true,
+    "cover_video_unchanged": true,
+    "original_manuscripts_and_captions_unchanged": true,
+    "static_and_three_motion_samples_per_animation_visually_reviewed": true,
+    "mobile_widths": [
+      320,
+      390
+    ],
+    "desktop_width": 1440,
+    "caption_overflow": false,
+    "katex_errors": 0,
+    "motion_playback_and_reduced_motion": "PASS",
+    "source_archive_contains_tex_and_renderer": true
+  }
 }
