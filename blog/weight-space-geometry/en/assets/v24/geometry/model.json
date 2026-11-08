@@ -1,0 +1,121 @@
+{
+  "classification": "exact analytic geometry with separately identified E3 measurements",
+  "fisher": {
+    "toy_F": [
+      [
+        1,
+        0
+      ],
+      [
+        0,
+        3
+      ]
+    ],
+    "equal_step_costs": [
+      0.5,
+      1.5
+    ],
+    "doses": [
+      0.03,
+      0.1,
+      0.3,
+      1.0
+    ],
+    "evaluation_prefixes": 32,
+    "source": "blog/data/measurements.json",
+    "medians": {
+      "measured_kl": [
+        2.0778691034476437e-06,
+        2.3661891046281806e-05,
+        0.00024231583295532483,
+        0.005781841445927366
+      ],
+      "fisher_prediction": [
+        2.06553265757102e-06,
+        2.2950362861900224e-05,
+        0.000206553265757102,
+        0.0022950362861900225
+      ],
+      "weight_norm_prediction": [
+        5.374713088619289e-06,
+        5.971903431799212e-05,
+        0.000537471308861929,
+        0.005971903431799211
+      ]
+    },
+    "median_full_dose_ratio": 0.3804750104052105
+  },
+  "duality": {
+    "F": [
+      [
+        2.0,
+        0.5
+      ],
+      [
+        0.5,
+        1.0
+      ]
+    ],
+    "J": [
+      [
+        1.0
+      ],
+      [
+        0.0
+      ]
+    ],
+    "G": [
+      [
+        2.0
+      ]
+    ],
+    "v": [
+      0.8,
+      1.4
+    ],
+    "differential_b": [
+      2.3,
+      1.7999999999999998
+    ],
+    "weight_natural_gradient": [
+      1.15
+    ],
+    "induced_and_projected": [
+      1.15,
+      0.0
+    ],
+    "euclidean_projection": [
+      0.8,
+      0.0
+    ]
+  },
+  "efficiency": {
+    "F": [
+      [
+        2.0,
+        0.5
+      ],
+      [
+        0.5,
+        1.0
+      ]
+    ],
+    "b": [
+      1.0,
+      0.8
+    ],
+    "c": 0.6,
+    "d_star": [
+      0.24324324324324323,
+      0.4459459459459459
+    ],
+    "d_euclid": [
+      0.3658536585365853,
+      0.2926829268292683
+    ],
+    "cost_star": 0.2128378378378378,
+    "cost_euclid": 0.23022010707911952,
+    "equal_effect_candidates_checked": 241
+  },
+  "motion_semantics": "analytic interpolation and discrete highlights of measured doses; no recorded search or optimization trajectory"
+}

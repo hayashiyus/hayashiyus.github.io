@@ -4,7 +4,7 @@
   "english_source": "research.en.source.md",
   "english_sha256": "63b8ce1322a87791066170652e79e9ce98b41d9334679f4e1b14733901a9831f",
   "japanese_editable_source": "../research.ja.md",
-  "japanese_current_sha256": "b36d156d940e50c8806d67cd27c9b355e7b867e93842934552614c8c8c398107",
+  "japanese_current_sha256": "70cc9931fb877a6402ce62d53d1a168d4035de5b2e949255202f5339d8f12b46",
   "japanese_initial_sha256": "1f4759ddc3f11068c66838ef67a69f17fef5c831508cc1e8a742df05a8f89984",
   "checks": {
     "display_math": {

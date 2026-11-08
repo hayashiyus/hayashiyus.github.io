@@ -1,0 +1,88 @@
+{
+  "schema": 1,
+  "source": "blog/data/measurements.json",
+  "source_sha256": "e76a056226f82b751283407e886c03946999089a28929bdee49a66b725ef8084",
+  "classification": "empirical report and numerical probes; connecting lines join observations",
+  "reconstruction": {
+    "reported_math500_accuracy_percent": {
+      "base": 7.9,
+      "edited": 48.1
+    },
+    "e1_n": {
+      "FP32": 40,
+      "BF16": 40
+    },
+    "plotted": {
+      "FP32": {
+        "max_logit_difference": 2.0384788513183594e-05,
+        "max_kl": 9.550912606975871e-12
+      },
+      "BF16": {
+        "max_logit_difference": 0.3046875,
+        "max_kl": 0.0071296411225740125
+      }
+    }
+  },
+  "controls": {
+    "scope": "synthetic teacher-forced continuation; repetitive states are constructed, not model generated",
+    "n_calibration": 16,
+    "target_positive": 0.23114010396238882,
+    "arms": {
+      "constant": {
+        "gains": [
+          0.25,
+          0.5,
+          1.0,
+          2.0,
+          4.0
+        ],
+        "values_positive": [
+          0.004628629598300904,
+          0.010618833606713451,
+          0.028167753378511406,
+          0.09993179615412373,
+          0.5477007691079052
+        ],
+        "selected_gain": 2.0,
+        "match_failure": true
+      },
+      "shuffle": {
+        "gains": [
+          0.25,
+          0.5,
+          1.0,
+          2.0,
+          4.0
+        ],
+        "values_positive": [
+          0.01891920431808103,
+          0.057599247389589436,
+          0.2577659476810368,
+          1.6991405569278868,
+          7.188866806056467
+        ],
+        "selected_gain": 1.0,
+        "match_failure": true
+      },
+      "random": {
+        "gains": [
+          0.25,
+          0.5,
+          1.0,
+          2.0,
+          4.0
+        ],
+        "values_positive": [
+          0.0032897820783546194,
+          0.009337222814792767,
+          0.06107503788371105,
+          0.9525227694102796,
+          4.176847797658411
+        ],
+        "selected_gain": 1.0,
+        "match_failure": true
+      }
+    },
+    "intersection_note": "No empirical match at plotted intersections; no extra gains are inferred."
+  }
+}
