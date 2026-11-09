@@ -416,6 +416,120 @@ These connections build on prior work: Amari's natural gradient, [Steer2Edit](ht
 
 Astra’s edit gives us a useful rule to inspect, execute and test. **The opportunity is to turn that understanding into a reliable method across models—and to test whether one improvement helps a model discover the next.** That is a concrete research goal for connecting model control to recursive self-improvement.
 
+## Appendix. Where do LoRA, model synthesis and Model Map fit?
+
+The Qwen case gives us a rule we can inspect. Three connections help us ask what carries beyond that case: how a learned LoRA update executes, what it takes to read or construct a network, and how to measure an edit through the probabilities the model assigns to text. They extend different parts of the story. The algebra of execution transfers directly; explaining discovery and construction requires more.
+
+### A. Does LoRA also store a steering rule?
+
+Yes. Let a linear layer receive activation \(a(x)\). A rank-r LoRA update has the form
+
+\[
+\begin{aligned}
+\Delta W&=\frac{\alpha}{r}BA,\\
+\Delta h(x)&=\frac{\alpha}{r}B[Aa(x)].
+\end{aligned}
+\]
+
+The matrix A reads a small set of values from the current activation. B turns those values into a correction. The update stores a rule; the incoming activation determines what the rule does on each input. The rank-one edit in the main text is a special case of this calculation. This is the forward computation described in the [original LoRA paper, §4.1](https://arxiv.org/html/2106.09685), not a new identity.
+
+The difference lies in how the rule is found. Ordinary LoRA learns its factors through gradient-based optimization. In the Qwen case, Astra used observed failures, internal measurements and feedback to construct a compact update. Its idealized edit can be represented in low-rank form, although WSP also includes operations that are not low rank. **Gradient-free does not mean data-free:** the Qwen experiment supplied practice problems and evaluation tools, as the [original setup](https://rikiyat.github.io/blog/weight-space-programming/) describes.
+
+This gives us a useful comparison to make. We can inspect a learned LoRA update and an Astra-style edit as rules acting on activations: which inputs trigger a correction, how its direction changes, and which useful outputs it disturbs. Whether geometry helps select a better rule remains an experiment to run.
+
+<details class="proof">
+<summary>Exact execution, multiple layers and finite precision</summary>
+
+The two factors have dimensions \(A\in\mathbb R^{r\times d_{\mathrm{in}}}\) and \(B\in\mathbb R^{d_{\mathrm{out}}\times r}\), with scale \(\alpha/r\). The displayed identity is exact in real arithmetic for a linear projection supplied with the same incoming activation. It does not require the update to be small. If several layers are edited, a hook at each later layer must read the activation already affected by earlier interventions. A fixed vector computed from an unedited run will not generally reproduce that computation.
+
+The released Qwen operation has an idealized masked rank-one form at each edited layer. Rounding a stored update can add a residual that is not rank one; reproducing the saved model therefore requires the actual stored difference. This still does not guarantee bitwise equality between merged and hook-based execution. The exact execution identity and the small-change Fisher approximation make different claims. Only the latter needs a local regime.
+
+</details>
+
+### B. Can geometry explain reading and building networks?
+
+Information geometry begins after we specify a probability distribution for a model's outputs and the inputs or states on which we evaluate it. It then relates weights to behavior. This makes it useful for checking what a construction does, but leaves a separate question: how did the editor find that construction?
+
+In weight-based classification, the target is a property of the network—such as its training task. A recognizer might read functional structure, or it might exploit traces of initialization and training. A function-preserving permutation of neurons provides one useful check: does the classification survive when the coordinates change but the network's outputs do not? This would help distinguish possible explanations, without resolving them on its own.
+
+For construction from scratch, the [original MinAtar experiment](https://rikiyat.github.io/blog/weight-space-programming/) supplied game rules, source code and the network's input/output specification, and Astra wrote a small policy network. That is a concrete form of implementing a procedure in weights. Fisher geometry can describe local changes around the resulting policy once an output distribution is defined. Explaining how the procedure was assembled calls for architectural knowledge and a program-synthesis account as well. **The promising extension is to connect construction with behavioral measurement:** build a candidate, inspect the computation it implements, and evaluate how later edits change it.
+
+<details class="proof">
+<summary>What the distribution must specify</summary>
+
+A deterministic action choice does not by itself specify a smooth probability model. If action scores are converted into probabilities with a softmax, the temperature and evaluation-state distribution must be stated; both affect the metric. Likewise, a subset of hidden-layer weights need not determine the full network's output distribution. Task labels cannot be recovered merely by knowing distances between distributions. These are additional modeling and inference choices, not consequences of the pullback identity.
+
+</details>
+
+### C. Can Model Map show where an edit moves a model?
+
+Model Map asks how likely different models consider the same collection of texts. Its coordinates are built from those log-likelihoods. The paper already derives their local connection to KL divergence and Fisher geometry; that connection is the starting point here, not a new result of this article. See [Model Map, §2.4 and Appendix D](https://arxiv.org/html/2502.16173v2).
+
+Let \(q_i\) be the paper's double-centered log-likelihood vector for model i, evaluated on N texts. If the models are close to a common reference distribution and the corpus samples that distribution, the paper obtains
+
+\[
+\frac{\|q_i-q_j\|^2}{N}
+\approx 2\,\mathrm{KL}(p_i\Vert p_j).
+\]
+
+For a small weight edit, this suggests a direct bridge. Under those approximation conditions, with the same output distribution used throughout,
+
+\[
+\begin{gathered}
+\frac{\|q(\theta+\delta\theta)-q(\theta)\|^2}{N}\\
+\approx \delta\theta^\top G_\theta\delta\theta\\
+\approx 2\,\mathrm{KL}(p_\theta\Vert p_{\theta+\delta\theta}).
+\end{gathered}
+\]
+
+**Fisher predicts a small movement from the weight side; Model Map measures it through changes in log-likelihood.** The activation analysis in the main text describes the intervention between those two views. Models with different architectures can be compared through probabilities assigned to common texts, without subtracting incompatible weight vectors.
+
+One next experiment would apply WSP and LoRA edits at several strengths, measure their displacements in the same likelihood coordinates, and compare them with Fisher predictions. Held-out task performance and behavior we want to preserve would still be evaluated separately: a distance measures change, not whether that change is useful. The existing Model Map paper also explores weight interpolation in §6.3; the experiment proposed here would examine specific editing rules and their local effects.
+
+<details class="proof">
+<summary>Derivation, sampling assumptions and the activation connection</summary>
+
+Write the log-likelihood vector on a fixed corpus as \(\ell(\theta)\), and let \(S\) be its Jacobian with respect to the permitted weights. Centering across the N texts is represented by \(H\). Keep the model-centering origin fixed when differentiating; it cancels in pairwise differences. Then
+
+\[
+\begin{aligned}
+S_{sj}&=\partial_{\theta_j}\log p_\theta(x_s),\\
+H&=I_N-\frac{\mathbf1\mathbf1^\top}{N},\\
+\Delta q&=HS\,\delta\theta+O(\|\delta\theta\|^2).
+\end{aligned}
+\]
+
+Taking the squared norm gives
+
+\[
+\begin{aligned}
+\widehat G_D&=\frac1N S^\top HS,\\
+\frac{\|\Delta q\|^2}{N}
+&=\delta\theta^\top\widehat G_D\delta\theta
++O(\|\delta\theta\|^3).
+\end{aligned}
+\]
+
+This is a sample covariance of scores. With independent samples from a distribution \(p_0\), it estimates the score covariance under that distribution. Under the usual regularity conditions, it converges to the model's Fisher matrix when \(p_0=p_\theta\). An arbitrary fixed corpus does not guarantee that equality; the Model Map approximation instead relies on models close to the corpus-generating distribution. This is a Taylor expansion connecting the two descriptions, not an additional empirical result.
+
+To connect to activations, let x now denote an evaluation context. Suppose every effect of the permitted edit passes through the chosen activation interface, and the downstream computation is fixed. With \(J(x)=\partial_\theta h_\theta(x)\), the conditional-output Fisher metric pulls back as
+
+\[
+\begin{aligned}
+G_\theta&=\mathbb E_x[J(x)^\top F_h(x)J(x)],\\
+\delta\theta^\top G_\theta\delta\theta
+&=\mathbb E_x[\delta h(x)^\top F_h(x)\delta h(x)],
+\end{aligned}
+\]
+
+where \(\delta h(x)=J(x)\delta\theta\) is the differential displacement. The expectation matters: one shared edit acts across contexts. For a full sequence distribution, the corresponding conditional terms must be summed over token positions and averaged over histories generated under the base model \(p_\theta\). Arbitrary fixed prefixes instead define a context-weighted metric.
+
+E3 in this article measures next-token distributions at fixed prefixes. Model Map's basic construction uses whole-text likelihoods. Their numerical distances cannot be equated without aligning the probability objects and sampling conditions. The distance above also uses the original high-dimensional coordinates; a two-dimensional PCA plot can discard relevant directions.
+
+</details>
+
+Together, these connections give the next experiments a concrete form: find a correction, inspect the rule it executes, and measure the behavioral change. They let us compare different ways of producing edits without assuming that the same search procedure, or the same coordinates, will work equally well in every model.
+
 ### Sources
 
 [^source]: [Original Weight-Space Programming report and README](https://github.com/RikiyaT/lm_understand-logs/blob/4d09ba6d6a7e891dd8063974dfe81b3d78e3494f/exp8_math/README.md), with the published 7.9%, 48.1%, 93.0%, and 33.1% values mirrored in [`blog/data/measurements.json`](data/measurements.json).

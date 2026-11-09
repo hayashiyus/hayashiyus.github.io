@@ -2,7 +2,7 @@
   "status": "PASS",
   "scope": "Historical translation preservation after reversing the hash-verified editorial revision; current approval and preservation are checked in editorial-release-qa.json.",
   "editorial_revision_checked": true,
-  "published_japanese_sha256": "d50df6dc96cd561d95b6053fc923f00ffa13ee9f71d557e65b3e671bbc399681",
+  "published_japanese_sha256": "b11902a2a7dbf18a1394134d81fbaf09e937cec455455106343bc6dd84e4d2ef",
   "english_source": "research.en.source.md",
   "english_sha256": "63b8ce1322a87791066170652e79e9ce98b41d9334679f4e1b14733901a9831f",
   "japanese_editable_source": "../research.ja.md",
