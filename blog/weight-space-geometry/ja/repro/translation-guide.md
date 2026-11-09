@@ -77,3 +77,5 @@ python3 blog/feature/build_ja.py --publish-local
 ## Research outlook and audience revision (2026-11-09)
 
 `audience-outlook-20261109.json` records the subsequent bilingual opening and conclusion revision and its primary-source additions. It foregrounds the contribution of the case analysis and an explicitly proposed recursive-improvement experiment. The previous approved snapshots and amendment remain unchanged. Equations, experimental results and figure captions are preserved.
+
+`research-program-framing-20261109.json` sharpens the opening contribution and final research-program framing without changing the evidence or mathematical scope.

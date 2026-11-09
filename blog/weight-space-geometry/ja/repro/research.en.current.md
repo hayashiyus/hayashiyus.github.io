@@ -14,7 +14,7 @@ How did an LLM find where—and in which direction—to intervene among hundreds
 
 A trained network has places where internal features can be measured and their effects changed. We can observe activations, modify the matrices that write them into the residual stream—the representation that successive layers read and update—and check what happens to the output. Astra used this structure to find a compact edit, with a different direction at each edited layer. During inference, that edit acts as **activation steering whose strength depends on the current state**.
 
-**This essay turns the published edit into a rule we can inspect and test.** We reconstruct its action as activation steering, measure how well Fisher geometry predicts changes in the output distribution, and explain which corrections a shared weight matrix can express. Together, these give an engineer a way to move from a proposed correction to a candidate weight edit.
+**This essay connects a model-written correction to a mathematical framework for designing the next edit.** We reconstruct its action as activation steering, measure how well Fisher geometry predicts changes in the output distribution, and explain which corrections a shared weight matrix can express. Together, these give an engineer a way to move from a proposed correction to a candidate weight edit.
 
 The practical sequence is to test a correction in activations, check whether the permitted weights can implement it across inputs, and measure the resulting behavior. Information geometry helps with the middle of that sequence: it describes reachable changes and gives small changes in output distribution a common measure. Our experiments also locate a limit—the local prediction breaks down at the full strength of Astra's edit.
 
@@ -408,7 +408,7 @@ These connections build on prior work: Amari's natural gradient, [Steer2Edit](ht
 
 </details>
 
-**Astra's edit gives us a rule we can inspect, execute and test. The next challenge is to make that process repeatable across models—and find out whether a better model can help make a better next edit.**
+**Astra's edit gives us a rule we can inspect, execute and test. The proposed path is to turn that understanding into a repeatable method across models, then ask whether an improved model becomes better at making the next edit.** This is where model control meets recursive self-improvement: the correction becomes a candidate step in a process that models could help improve.
 
 ### Sources
 
