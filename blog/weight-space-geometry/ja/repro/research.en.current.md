@@ -6,23 +6,23 @@
 
 **Can one improvement help a model discover the next?**
 
-If an edited model becomes better at proposing useful edits, one improvement could help produce another. This is the recursive self-improvement loop we propose to test. Our starting point is a concrete result: Astra wrote an edit for Qwen that stores a state-dependent steering rule in its weights.
+A model that becomes better at finding useful edits could help produce its next improvement. That is the recursive self-improvement loop we want to test. Astra’s edit of Qwen gives us a concrete place to start: **a steering rule stored in the weights, whose push changes with the model’s state.**
 
-In the Weight-Space Programming study, Astra's repair changed selected columns in two MLP matrices. Takehi and colleagues reported that MATH-500 accuracy rose from **7.9% to 48.1%**, while the fraction of answers hitting the token limit fell from **93.0% to 33.1%**. Gradient-based training was not allowed. We distinguish those reported results from our own experiments, which examine how the edit works inside the model and how far local geometry can explain its effects.[^source]
+In the Weight-Space Programming study, Astra changed selected columns in two MLP matrices. Takehi and colleagues reported that MATH-500 accuracy rose from **7.9% to 48.1%**, while the fraction of answers hitting the token limit fell from **93.0% to 33.1%**. Gradient-based training was not allowed. Those benchmark results belong to the original authors; our experiments examine the mechanism of the released edit.[^source]
 
-The repair began with **85 unfinished answers**.
+**Our contribution is to connect the rule Astra wrote, the corrections shared weights can express, and the output changes Fisher geometry predicts locally.** We reconstruct the edit as activation steering and measure where the geometric prediction holds. The underlying algebra is established; applying it to this released edit gives us concrete questions to test next.
+
+For an engineer, the suggested workflow is straightforward: try a correction in activations, check whether the permitted weights can implement it across inputs, then evaluate the edited model. Geometry describes the reachable corrections and gives small changes in the output distribution a common measure. Along the tested direction, Fisher predicted small changes well and lost accuracy at the original edit strength. Whether it helps us choose better edits is the next experiment.
+
+The repair itself began with **85 unfinished answers**.
 
 When Astra asked Qwen3.5-0.8B to solve 96 practice problems, eleven answers were correct. The other 85 ran through the 32,768-token budget without reaching an answer. Their final passages repeated the same phrases over and over. Before any geometric analysis, Astra already had a useful lead: a recognizable pattern of failure.[^logs]
 
 How did an LLM find where—and in which direction—to intervene among hundreds of millions of parameters?
 
-A trained network has places where internal features can be measured and their effects changed. We can observe activations, modify the matrices that write them into the residual stream—the representation that successive layers read and update—and check what happens to the output. Astra used this structure to find a compact edit, with a different direction at each edited layer. During inference, that edit acts as **activation steering whose strength depends on the current state**.
+A trained network gives us places to observe internal features and change their effects. We can measure activations, modify the matrices that write them into the residual stream—the representation successive layers read and update—and check the output. Astra used this structure to find a compact edit, with a different direction at each edited layer. Once stored, the rule reads the current activations and scales its correction accordingly.
 
-**This essay connects a model-written correction to a mathematical framework for designing the next edit.** We reconstruct its action as activation steering, measure how well Fisher geometry predicts changes in the output distribution, and explain which corrections a shared weight matrix can express. Together, these give an engineer a way to move from a proposed correction to a candidate weight edit.
-
-The practical sequence is to test a correction in activations, check whether the permitted weights can implement it across inputs, and measure the resulting behavior. Information geometry helps with the middle of that sequence: it describes reachable changes and gives small changes in output distribution a common measure. Our experiments also locate a limit—the local prediction breaks down at the full strength of Astra's edit.
-
-We will follow **the failure Astra observed, the program it wrote into the weights, and the geometry that describes how that program acts**. The final section asks how this could become a repeatable method across models, and what would need to happen for a successful edit to help produce the next improvement.
+We will follow **the failure Astra observed, the program it wrote into the weights, and the geometry of that program’s effects**. Then we will ask how this could become a repeatable method across models, and whether a successful edit could help a model become better at making the next one.
 
 <details class="proof">
 <summary>Experiment inventory and scope</summary>
@@ -364,9 +364,15 @@ We can pull the output metric back to a hidden layer. That alone does not give t
 
 Even so, once we specify a behavioral objective, the geometry suggests a concrete edit to test. Let the covector \(b\) measure the desired first-order change, and let \(F_{\mathrm{prod}}\) measure cost on contexts whose useful outputs we want to preserve. A damped candidate direction is proportional to \((F_{\mathrm{prod}}+\lambda I)^{-1}b\). Whether it helps must be tested at a matched target effect. This remains a research proposal; it has not been shown to improve on Astra's edit.
 
-## 8. What have we learned, and what remains open?
+## 8. What can we build from this?
 
-For an engineer deciding what to do next, the evidence supports the following workflow. These are deductions and proposed tests from this case, not validated product guarantees.
+**Astra found a small program that runs inside Qwen.** The edit reads the current activations and changes how the model writes into its residual stream. The public logs show how Astra moved from a recurring failure through contrast measurements, interventions and gain sweeps to improvements on held-out questions.
+
+Our contribution is to make that program something we can reconstruct and reason about when designing another edit. The exact linear identity connects weight changes to activation interventions. The shared-weight constraint tells us which corrections can coexist across inputs. Fisher supplies a local measure of their effect on the output distribution. Together, these let us test a correction, check whether it can be stored in the permitted weights, and compare changes to behavior we want to preserve.
+
+Our E1 experiment reconstructed the edit as an additive intervention and confirmed numerical agreement in FP32. E3 found that Fisher geometry predicted small KL changes at fixed prefixes well, but the prediction broke down at the original gain-six strength. That result locates the limit of the approximation; the original edit still improved the reported task results. E2 measured responses to constructed sequences. Because those sequences did not arise from natural generation and the control effects were not matched, it cannot establish whether the switch is necessary during generation.
+
+Those results suggest the following workflow for the next experiment. It combines checks we have performed with comparisons still to be run.
 
 | Decision | Evidence-led action | What it establishes |
 | --- | --- | --- |
@@ -377,29 +383,25 @@ For an engineer deciding what to do next, the evidence supports the following wo
 | Test shared constraints | Fit requested changes across inputs and inspect residuals and reachability. | Whether one shared weight matrix can express the proposed steering field. |
 | Validate held-out generation | Evaluate naturally generated, held-out trajectories and task outcomes with matched sampling. | Whether a fixed-prefix or teacher-forced result transfers to generation. |
 
-**Astra found a small program that runs inside Qwen.** The edit reads the current activations and changes how the model writes into its residual stream. Logs record the failure, contrast measurements, causal interventions, gain sweeps, and improvements on questions not used in the search.
-
-The contribution of this analysis is to connect that executable rule to a geometry of possible edits. The exact linear identity tells us how to reproduce a weight edit with an activation intervention. The shared-weight constraint tells us whether different inputs can receive the corrections we want. The Fisher metric gives us a local cost in output KL. These are useful parts of an editing procedure: test the correction, check that it can be stored in the permitted weights, and compare its effects on outputs we want to preserve.
-
-Our E1 experiment reconstructed the edit as an additive intervention and confirmed numerical agreement in FP32. E3 found that Fisher geometry predicted small KL changes at fixed prefixes well, but the prediction broke down at the original gain-six strength. That result locates the limit of the approximation; the original edit still improved the reported task results. E2 measured responses to constructed sequences. Because those sequences did not arise from natural generation and the control effects were not matched, it cannot establish whether the switch is necessary during generation.
-
 ### From a working correction to a reusable method
 
-The mathematics applies wherever an editable linear map writes into a model's activations. Directions, gates and useful intervention sites still have to be found in each model, but we can ask the same engineering questions at each site. This is the basis for a research program: **find a useful steering rule, establish which part can be implemented by shared weights, and validate the stored rule on new inputs.** Independent [WSP follow-up experiments](https://arxiv.org/html/2611.09382v1) already report gains on several tasks, alongside uneven transfer and searches that retained the original model. Reliable discovery is a concrete problem to solve.
+The same algebra applies wherever an editable linear map writes into a model’s activations. Useful directions, gates and intervention sites may differ, but the design questions carry across models: **find a useful steering rule, check which part shared weights can implement, and test the stored rule on new inputs.** Independent [WSP follow-up experiments](https://arxiv.org/html/2611.09382v1) report gains on several tasks, alongside uneven transfer and searches that retained the original model. The next opportunity is to make discovery reliable.
 
 This connects directly to current work on model control. Anthropic's [Assistant Axis](https://www.anthropic.com/research/assistant-axis) uses activation constraints to stabilize behavior. Goodfire's [manifold steering](https://www.goodfire.com/research/manifold-steering) studies interventions that follow the geometry of representations. Our complementary question is which of those useful interventions a shared weight edit could implement. The projection identity gives that question a precise local form. Some requested corrections lie outside the reachable space; identifying them helps us decide when to change the edit family or keep an intervention in activation space.
 
-The next step is a preregistered comparison with the original behavioral target held fixed. It should use naturally generated trajectories as well as synthetic controls, keep discovery data separate from evaluation data, and test whether a direction informed by the metric predicts fewer side effects before committing to expensive generation runs. Negative controls should preserve intervention magnitude while disrupting the proposed mechanism. If the comparison succeeds, geometry becomes a tool for designing edits; if it fails, the logs still show that an LLM can write a program into a large network when it can observe a failure, measure internal contrasts, access a suitable write path, and iterate within a sufficient budget.
+To test the practical value of geometry, we would preregister a comparison against simpler editing choices, keeping the original behavioral target fixed. Match the target benefit and total budget, including the cost of estimating the metric, then compare behavior on held-out tasks. Use naturally generated trajectories alongside synthetic controls, and keep discovery data separate from evaluation data. Controls that preserve intervention magnitude while disrupting the proposed mechanism would help identify what makes a correction work.
 
-### What would make the improvement recursive?
+This experiment asks whether the metric can help us predict which edits preserve more of the behavior we want before we spend heavily on generation. Its outcome would determine how useful geometry is for choosing edits. The original logs already provide a working example of an LLM finding a compact rule through observation, internal measurements and iterative tests.
 
-A useful edit can matter twice: it can improve the task we measured, and it might improve the model's ability to help make subsequent edits. The second effect is the one to test for recursive self-improvement. Removing an obstacle to an existing ability could help, even if the edit adds no new ability.
+### Can an improvement help produce the next one?
 
-A concrete experiment would let an edited model help propose or evaluate the next set of edits, then compare it with the unedited model doing the same work. Give both the same tools, feedback and compute budget. After each accepted edit, re-estimate the activations and local metric before designing another. In the recursive arm, each accepted edited checkpoint becomes the editor for the next round.
+**The exciting possibility is that an edit makes a model better at finding its next improvement.** A repair that lets an existing ability work more reliably could also help the model propose or assess better edits. Astra was the editor and Qwen the target in the case studied here. Improving the editor’s ability, and sustaining that improvement over rounds, are the experiments we now want to run.
 
-Evaluate the resulting edits independently on held-out tasks, count failed searches as well as successes, and repeat over successive rounds. This tests whether the improvement strengthens the process that produces further improvements. The Astra–Qwen case establishes no such feedback loop yet; this is the research program that the mechanism makes concrete.
+Start by comparing edited and unedited models as editors of the same frozen target checkpoints. Give them the same tools, evidence, feedback and compute budget. Then compare an editor that changes across rounds with a fixed editor given the same accumulated history and total budget. In the recursive condition, each accepted edited checkpoint takes over as the editor for the next round. Re-estimate activations and the local metric after each accepted edit.
 
-That distinction matters in the wider discussion of AI research automation. [OpenAI's account of research acceleration](https://openai.com/index/research-acceleration-view-inside-openai/) and [METR's assessment at Anthropic](https://metr.org/blog/2026-11-05-anthropic-ai-rd-acceleration-assessment/) examine how AI contributes to further model development. WSP supplies a particularly inspectable candidate operation within that process: a model proposes a weight change, we can examine what it does, and independent evaluation decides whether to retain it. Our proposal is to use the geometry to help design and test those operations, then ask whether the models become better at the process itself.
+Keep the tests used to accept an edit separate from a sealed final evaluation. Count failed searches as well as successes, and evaluate successive rounds independently. This would let us ask whether improving the editor improves the edits that follow, and whether that effect lasts. The Astra–Qwen run supplies the starting point; it has not demonstrated this feedback loop.
+
+That question connects WSP to the wider effort to automate AI research. [OpenAI’s account of research acceleration](https://openai.com/index/research-acceleration-view-inside-openai/) and [METR’s assessment at Anthropic](https://metr.org/blog/2026-11-05-anthropic-ai-rd-acceleration-assessment/) examine how AI contributes to further model development. WSP offers an operation whose effects we can inspect: a model proposes a weight change, we examine what it does, and independent evaluation decides whether to retain it. Our proposal is to use geometry to help design and test these operations, then ask whether the models become better at the process itself.
 
 <details class="proof">
 <summary>Scope, unresolved questions and prior work</summary>
@@ -412,7 +414,7 @@ These connections build on prior work: Amari's natural gradient, [Steer2Edit](ht
 
 </details>
 
-**Astra's edit gives us a rule we can inspect, execute and test. The proposed path is to turn that understanding into a repeatable method across models, then ask whether an improved model becomes better at making the next edit.** This is where model control meets recursive self-improvement: the correction becomes a candidate step in a process that models could help improve.
+Astra’s edit gives us a useful rule to inspect, execute and test. **The opportunity is to turn that understanding into a reliable method across models—and to test whether one improvement helps a model discover the next.** That is a concrete research goal for connecting model control to recursive self-improvement.
 
 ### Sources
 
