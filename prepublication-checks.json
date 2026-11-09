@@ -1,5 +1,5 @@
 {
-  "date": "2026-11-08",
+  "date": "2026-11-09",
   "scope": "Prepublication content, artifact and browser checks; not new experiments or proof of general scientific claims.",
   "semantic_review": {
     "bilingual": "PASS",
@@ -70,7 +70,7 @@
     "caption_katex_per_language": 34,
     "interactive_katex_per_language": 4
   },
-  "source_archive_sha256": "f22dd13bbacd32e7da000d8f9b417fbb188a9f420bc96651a6b0c063308b53fb",
+  "source_archive_sha256": "f32701fa86c4866bb34f4a38cf2bf42305f54d89b99e6ca3563d81ded52a263d",
   "math_typography_revision": {
     "date": "2026-11-08",
     "engine": "KaTeX 0.16.11; article runtime, CSS, fonts",
@@ -503,5 +503,54 @@
       "caption_katex_per_article": 34,
       "signed_gate_EN_JA_negative_zero_positive": "PASS"
     }
+  },
+  "scroll_motion_revision": {
+    "date": "2026-11-09",
+    "scope": "Playback policy only; no changes to manuscripts, formulas, captions, figure media or measurements.",
+    "policy": {
+      "non_cover_videos": 7,
+      "visible_fraction_to_start": 0.6,
+      "dwell_ms": 600,
+      "visible_fraction_to_pause": 0.25,
+      "only_one_non_cover_playing": true,
+      "completion": "Restore static summary; no automatic replay",
+      "offscreen": "Pause and retain time; unfinished automatic playback resumes after dwell",
+      "manual_stop": "Restore poster and block future automatic starts for this figure until reload",
+      "reduced_motion": "Suppress automatic starts; allow deliberate manual playback",
+      "cover": "Existing behavior retained",
+      "autoplay_denial": "Keep still and manual play button; no looping GIF fallback"
+    },
+    "browser": {
+      "engine": "Chromium; responsive viewport emulation, not physical phone hardware",
+      "languages": [
+        "en",
+        "ja"
+      ],
+      "widths": [
+        1440,
+        390,
+        320
+      ],
+      "fast_scroll_300ms_stays_paused": true,
+      "visible_750ms_starts": true,
+      "offscreen_pause_and_resume": true,
+      "single_non_cover_active": true,
+      "manual_stop_blocks_reentry": true,
+      "full_12s_completion_returns_poster": true,
+      "completed_reentry_stays_still": true,
+      "reduced_motion_and_manual_override": true,
+      "live_reduced_motion_change_pauses": true,
+      "horizontal_page_overflow": false,
+      "localized_labels": "PASS",
+      "cover_initial_autoplay": "PASS",
+      "simulated_autoplay_denial": "PASS; still restored, subsequent manual playback worked"
+    },
+    "source_sha256": {
+      "site.js": "ea5df86f75b6df54a22f7b319ae7dff53d907a6d9177bf04e8b749974482ab43",
+      "build.py": "2154b9c95e131d51c4808f03e700b20ff8b787e565fa8a500b1a3ec4297ff1eb",
+      "build_ja.py": "06a2488d5e4d50ec83f4710b4850f9e51ee422b8085971d887b721c3fa3df180"
+    },
+    "protected_content": "EN/JA preservation checks PASS; generated formulas and figure captions equal previous publication",
+    "archive_sha256": "f32701fa86c4866bb34f4a38cf2bf42305f54d89b99e6ca3563d81ded52a263d"
   }
 }
