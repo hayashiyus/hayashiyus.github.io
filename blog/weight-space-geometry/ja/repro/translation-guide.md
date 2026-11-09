@@ -73,3 +73,7 @@ python3 blog/feature/build_ja.py --publish-local
 ## 承認後の追補（append-only）
 
 承認済み原稿を変更する必要がある場合は、既存のスナップショットを上書きせず、追補JSONに日英それぞれの一意な `old`/`new` 置換、承認理由、追加外部ソースを記録します。追補ファイルのSHA-256を `editorial-revision.json` の `article_amendments` に固定し、ガードは承認稿へ置換を一度だけ適用した結果と現行本文が一致する場合だけ通します。追加ソースは追補に列挙したURLだけを許可し、図注・数式・コード・数値・図順は従来どおり不変です。
+
+## Research outlook and audience revision (2026-11-09)
+
+`audience-outlook-20261109.json` records the subsequent bilingual opening and conclusion revision and its primary-source additions. It foregrounds the contribution of the case analysis and an explicitly proposed recursive-improvement experiment. The previous approved snapshots and amendment remain unchanged. Equations, experimental results and figure captions are preserved.
