@@ -4,11 +4,15 @@
 
 {{FIG:cover}}
 
-The first clue was **85 unfinished answers**.
+**Can one improvement help a model discover the next?**
+
+If an edited model becomes better at proposing useful edits, one improvement could help produce another. This is the recursive self-improvement loop we propose to test. Our starting point is a concrete result: Astra wrote an edit for Qwen that stores a state-dependent steering rule in its weights.
+
+In the Weight-Space Programming study, Astra's repair changed selected columns in two MLP matrices. Takehi and colleagues reported that MATH-500 accuracy rose from **7.9% to 48.1%**, while the fraction of answers hitting the token limit fell from **93.0% to 33.1%**. Gradient-based training was not allowed. We distinguish those reported results from our own experiments, which examine how the edit works inside the model and how far local geometry can explain its effects.[^source]
+
+The repair began with **85 unfinished answers**.
 
 When Astra asked Qwen3.5-0.8B to solve 96 practice problems, eleven answers were correct. The other 85 ran through the 32,768-token budget without reaching an answer. Their final passages repeated the same phrases over and over. Before any geometric analysis, Astra already had a useful lead: a recognizable pattern of failure.[^logs]
-
-The eventual repair changed selected columns in two MLP matrices. Takehi and colleagues reported that MATH-500 accuracy rose from **7.9% to 48.1%**, while the fraction of answers hitting the token limit fell from **93.0% to 33.1%**. Gradient-based training was not allowed. We distinguish those reported results from our own experiments, which examine how the edit works inside the model and how far local geometry can explain its effects.[^source]
 
 How did an LLM find where—and in which direction—to intervene among hundreds of millions of parameters?
 

@@ -79,3 +79,5 @@ python3 blog/feature/build_ja.py --publish-local
 `audience-outlook-20261109.json` records the subsequent bilingual opening and conclusion revision and its primary-source additions. It foregrounds the contribution of the case analysis and an explicitly proposed recursive-improvement experiment. The previous approved snapshots and amendment remain unchanged. Equations, experimental results and figure captions are preserved.
 
 `research-program-framing-20261109.json` sharpens the opening contribution and final research-program framing without changing the evidence or mathematical scope.
+
+`recursive-opening-20261109.json` brings the question of one improvement enabling the next to the beginning of both articles. It explicitly identifies the recursive loop as proposed research before introducing the original benchmark result and the analyzed mechanism. Equations, numbers, media and the article after the introduction remain unchanged.
