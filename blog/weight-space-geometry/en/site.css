@@ -98,6 +98,14 @@ a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visibl
 .figure figcaption { padding: 19px 7px 4px; color: var(--muted); font-size: .82rem; }
 .figure .label { display: block; color: var(--vermilion); font-size: .68rem; letter-spacing: .11em; text-transform: uppercase; font-weight: 700; margin-bottom: 5px; }
 .figure figcaption a { margin-left: 4px; }
+.figure .caption-takeaway { max-width: 850px; margin: 0 0 8px; line-height: 1.7; color: var(--ink); }
+.figure .figure-enlarge { display: inline-block; margin: 0 0 6px; }
+.figure .caption-details { margin: 8px 0 0; padding: 9px 0 0; border-top: 1px solid var(--line); border-bottom: 0; }
+.figure .caption-details > summary { cursor: pointer; color: var(--muted); font-weight: 500; }
+.figure .caption-details[open] > summary { margin-bottom: 10px; }
+.figure .caption-settings { max-width: 1000px; line-height: 1.8; overflow-wrap: anywhere; }
+.figure .caption-downloads { display: flex; flex-wrap: wrap; gap: 6px 15px; margin-top: 10px; }
+.figure .caption-downloads a { margin-left: 0; }
 .figure.pending { min-height: 170px; display: grid; place-items: center; border: 1px dashed var(--line); background: var(--wash); }
 .motion { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin: 10px 7px 0; color: var(--muted); font-size: .78rem; }
 .motion button { font: 600 .78rem var(--sans); border: 1px solid var(--vermilion); background: transparent; color: var(--vermilion); border-radius: 99px; padding: 7px 13px; cursor: pointer; }
@@ -139,7 +147,8 @@ a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visibl
   .toc ol { display: block; }
   .toc li a { white-space: normal; }
   .article { font-size: 16px; }
-  .article table { display: block; overflow: auto; white-space: nowrap; }
+  .article table { display: block; overflow: auto; white-space: normal; }
+  .article th, .article td { min-width: 135px; }
   .figure.breakout { --plate-width: calc(100vw - 24px); }
   .figure figcaption { font-size: .78rem; padding-left: 6px; padding-right: 6px; }
   .figure .label { font-size: .64rem; }

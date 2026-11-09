@@ -1,6 +1,8 @@
 {
   "status": "PASS",
-  "scope": "Preservation of mathematical/source structure; not an independent scientific or literature audit.",
+  "scope": "Historical translation preservation after reversing the hash-verified editorial revision; current approval and preservation are checked in editorial-release-qa.json.",
+  "editorial_revision_checked": true,
+  "published_japanese_sha256": "1980b3e285efb054155697b72f4a57e419d23e80a848455b07a0dad8b5ec1a81",
   "english_source": "research.en.source.md",
   "english_sha256": "63b8ce1322a87791066170652e79e9ce98b41d9334679f4e1b14733901a9831f",
   "japanese_editable_source": "../research.ja.md",
