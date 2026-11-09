@@ -12,9 +12,9 @@
     "translations/audience-outlook-20261109.json": "2227b85ed406492f0e765dd141e854c8602a130aa90b3bbbe0ce3271002aa86a",
     "editorial_release.py": "543c73c0bd2c6ff57886ebe3c979e9a65ab12bbfe45033546270f736d48f5b21",
     "translations/editorial-release-qa.json": "198d888869a2a6ab64c74b9e3e19ae1da4ef895a397c63cc5dee44860bfe2184",
-    "build.py": "f7945f558c1545bb80692846f0336c64f4228654a3431a934121f89c4be3ac51",
+    "build.py": "9c16075fcc38adb88e3c7b84d14027cc8f23814355abf115b6c105cf4819b4b9",
     "build_ja.py": "5efa1ac8c195d6c9cf3dc7de349396d5234b199f504e90b8675a84a2cae8f644",
     "site.css": "5dc65f4dd35241d82deccb93ec3e68799eab1952e7e3c2455a64d1d51e9eaa34",
-    "site.js": "ea5df86f75b6df54a22f7b319ae7dff53d907a6d9177bf04e8b749974482ab43"
+    "site.js": "638ca948dfc8ada683e1bd94abab2380852efaf5f9de9bc2af42d71c463177e3"
   }
 }
