@@ -48,7 +48,7 @@ a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visibl
   font-size: .7rem; letter-spacing: .15em; text-transform: uppercase;
   color: var(--muted); font-weight: 700;
 }
-.kicker { color: var(--vermilion); }
+.kicker { color: var(--vermilion); font-size: 1.05rem; }
 .masthead nav { display: flex; gap: 20px; font-size: .82rem; }
 .masthead nav a { color: var(--muted); text-decoration: none; }
 .cover { max-width: 1240px; margin: 0 auto; padding: 38px clamp(22px,5vw,64px) 16px; }

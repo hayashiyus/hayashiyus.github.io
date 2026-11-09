@@ -70,7 +70,7 @@
     "caption_katex_per_language": 34,
     "interactive_katex_per_language": 4
   },
-  "source_archive_sha256": "f32701fa86c4866bb34f4a38cf2bf42305f54d89b99e6ca3563d81ded52a263d",
+  "source_archive_sha256": "9c232dc6d0558eaab912be77e03923313d0bdda24f105d2a1b49ca24f9c0ff29",
   "math_typography_revision": {
     "date": "2026-11-08",
     "engine": "KaTeX 0.16.11; article runtime, CSS, fonts",
@@ -552,5 +552,22 @@
     },
     "protected_content": "EN/JA preservation checks PASS; generated formulas and figure captions equal previous publication",
     "archive_sha256": "f32701fa86c4866bb34f4a38cf2bf42305f54d89b99e6ca3563d81ded52a263d"
+  },
+  "kicker_size_revision": {
+    "date": "2026-11-09",
+    "languages": [
+      "en",
+      "ja"
+    ],
+    "previous_rem": 0.7,
+    "current_rem": 1.05,
+    "ratio": 1.5,
+    "browser_widths": [
+      1440,
+      390,
+      320
+    ],
+    "computed_px": 16.8,
+    "horizontal_overflow": false
   }
 }
