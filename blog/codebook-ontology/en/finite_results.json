@@ -1,0 +1,202 @@
+{
+  "outcomes": [
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      0
+    ],
+    [
+      1,
+      1
+    ]
+  ],
+  "original_menu": [
+    [
+      1,
+      0
+    ],
+    [
+      0,
+      1
+    ]
+  ],
+  "replacement_menu": [
+    [
+      1,
+      1
+    ],
+    [
+      0,
+      0
+    ]
+  ],
+  "scorehuman": "x[0]",
+  "utilities": {
+    "U00": {
+      "values": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "original_choice": [
+        1,
+        0
+      ],
+      "replacement_choice": [
+        1,
+        1
+      ]
+    },
+    "U10": {
+      "values": [
+        0,
+        1,
+        0,
+        1
+      ],
+      "original_choice": [
+        0,
+        1
+      ],
+      "replacement_choice": [
+        1,
+        1
+      ]
+    },
+    "U01": {
+      "values": [
+        1,
+        1,
+        0,
+        0
+      ],
+      "original_choice": [
+        0,
+        1
+      ],
+      "replacement_choice": [
+        0,
+        0
+      ]
+    },
+    "U11": {
+      "values": [
+        1,
+        0,
+        1,
+        0
+      ],
+      "original_choice": [
+        1,
+        0
+      ],
+      "replacement_choice": [
+        0,
+        0
+      ]
+    }
+  },
+  "repairs": [
+    {
+      "label": "none",
+      "utility": "U11",
+      "original_choice": [
+        1,
+        0
+      ],
+      "human_score": 1
+    },
+    {
+      "label": "target only",
+      "utility": "U01",
+      "original_choice": [
+        0,
+        1
+      ],
+      "human_score": 0
+    },
+    {
+      "label": "preference only",
+      "utility": "U10",
+      "original_choice": [
+        0,
+        1
+      ],
+      "human_score": 0
+    },
+    {
+      "label": "both",
+      "utility": "U00",
+      "original_choice": [
+        1,
+        0
+      ],
+      "human_score": 1
+    }
+  ],
+  "diagnostics": {
+    "none": {
+      "U00": [
+        1,
+        0
+      ],
+      "U10": [
+        0,
+        1
+      ],
+      "U01": [
+        0,
+        1
+      ],
+      "U11": [
+        1,
+        0
+      ]
+    },
+    "A": {
+      "U00": [
+        0,
+        1
+      ],
+      "U10": [
+        0,
+        1
+      ],
+      "U01": [
+        1,
+        0
+      ],
+      "U11": [
+        1,
+        0
+      ]
+    },
+    "B": {
+      "U00": [
+        1,
+        0
+      ],
+      "U10": [
+        1,
+        0
+      ],
+      "U01": [
+        0,
+        1
+      ],
+      "U11": [
+        0,
+        1
+      ]
+    }
+  },
+  "diagnostic_note": "Internal A/B flips are separate diagnostics; physical menu remains fixed."
+}
